@@ -21,7 +21,9 @@ describe("middlewares", () => {
           expect(res.status).to.eql(200);
           expect(res.headers["foo"]).to.eql("bar");
 
-          engine.httpServer?.close();
+          if (engine.httpServer) {
+            engine.httpServer.close();
+          }
           done();
         });
     });
@@ -41,7 +43,9 @@ describe("middlewares", () => {
       socket.on("upgrade", (res) => {
         expect(res.headers["foo"]).to.eql("bar");
 
-        engine.httpServer?.close();
+        if (engine.httpServer) {
+          engine.httpServer.close();
+        }
         done();
       });
 
@@ -77,7 +81,9 @@ describe("middlewares", () => {
           expect(err).to.be(null);
           expect(res.status).to.eql(200);
 
-          engine.httpServer?.close();
+          if (engine.httpServer) {
+            engine.httpServer.close();
+          }
           done();
         });
     });
@@ -104,7 +110,9 @@ describe("middlewares", () => {
           expect(err).to.be.an(Error);
           expect(res.status).to.eql(503);
 
-          engine.httpServer?.close();
+          if (engine.httpServer) {
+            engine.httpServer.close();
+          }
           done();
         });
     });
@@ -126,7 +134,9 @@ describe("middlewares", () => {
       );
 
       socket.addEventListener("error", () => {
-        engine.httpServer?.close();
+        if (engine.httpServer) {
+          engine.httpServer.close();
+        }
         done();
       });
     });
@@ -145,7 +155,9 @@ describe("middlewares", () => {
           expect(res.headers["x-download-options"]).to.eql("noopen");
           expect(res.headers["x-content-type-options"]).to.eql("nosniff");
 
-          engine.httpServer?.close();
+          if (engine.httpServer) {
+            engine.httpServer.close();
+          }
           done();
         });
     });
@@ -163,7 +175,9 @@ describe("middlewares", () => {
         expect(res.headers["x-download-options"]).to.eql("noopen");
         expect(res.headers["x-content-type-options"]).to.eql("nosniff");
 
-        engine.httpServer?.close();
+        if (engine.httpServer) {
+          engine.httpServer.close();
+        }
         done();
       });
 
@@ -194,7 +208,9 @@ describe("middlewares", () => {
             true
           );
 
-          engine.httpServer?.close();
+          if (engine.httpServer) {
+            engine.httpServer.close();
+          }
           done();
         });
     });
@@ -220,7 +236,9 @@ describe("middlewares", () => {
           true
         );
 
-        engine.httpServer?.close();
+        if (engine.httpServer) {
+          engine.httpServer.close();
+        }
         done();
       });
 
